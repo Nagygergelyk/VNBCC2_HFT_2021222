@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VNBCC2_HFT_2021222.Models\VNBCC2_HFT_2021222.Models.csproj" />
+    <ProjectReference Include="..\VNBCC2_HFT_2021222.Repository\VNBCC2_HFT_2021222.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
