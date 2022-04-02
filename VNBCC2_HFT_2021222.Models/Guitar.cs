@@ -16,9 +16,8 @@ namespace VNBCC2_HFT_2021222.Models
         [Column("guitar_id", TypeName = "int")]
         public override int Id { get; set; }
 
-        [MaxLength(100)]
         [Required]
-        public string Model { get; set; }
+        public int Year { get; set; }
 
         public int? BasePrice { get; set; }
 
@@ -37,7 +36,7 @@ namespace VNBCC2_HFT_2021222.Models
         {
             string[] split = line.Split('#');
             Id = int.Parse(split[0]);
-            Model = split[1];
+            Year = int.Parse(split[1]);
             BasePrice = int.Parse(split[2]);
             BrandId = int.Parse(split[3]);
             ShapeId = int.Parse(split[4]);
