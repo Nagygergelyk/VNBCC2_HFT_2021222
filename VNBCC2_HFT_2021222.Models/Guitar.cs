@@ -32,5 +32,15 @@ namespace VNBCC2_HFT_2021222.Models
 
         [ForeignKey(nameof(Shape))]
         public int ShapeId { get; set; }
+
+        public Guitar(string line)
+        {
+            string[] split = line.Split('#');
+            Id = int.Parse(split[0]);
+            Model = split[1];
+            BasePrice = int.Parse(split[2]);
+            BrandId = int.Parse(split[3]);
+            ShapeId = int.Parse(split[4]);
+        }
     }
 }

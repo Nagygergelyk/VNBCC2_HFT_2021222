@@ -11,6 +11,12 @@ namespace VNBCC2_HFT_2021222.Models
     [Table("brands")]
     public class Brand : Entity
     {
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BrandId { get; set; }
+
+
         [MaxLength(50)]
         [Required]
         public string Name { get; set; }
@@ -21,6 +27,13 @@ namespace VNBCC2_HFT_2021222.Models
         public Brand()
         {
             this.Guitars = new HashSet<Guitar>();
+        }
+
+        public Brand(string line)
+        {
+            string[] split = line.Split('#');
+            BrandId = int.Parse(split[0]);
+            Name = split[1];
         }
     }
 }
