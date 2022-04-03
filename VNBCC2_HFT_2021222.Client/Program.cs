@@ -11,7 +11,7 @@ namespace VNBCC2_HFT_2021222.Client
 
             foreach (var item in ctx.Guitars)
             {
-                Console.WriteLine(item.Brand + "; " + item.Shape + "; " + item.Year);
+                Console.WriteLine(item.Brand.Name + "; " + item.Shape.Name + "; " + item.Year);
             }
             Console.ReadLine();
         }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace VNBCC2_HFT_2021222.Models
 {
     [Table("brands")]
-    public class Brand : Entity
+    public class Brand
     {
 
         [Key]
@@ -32,6 +32,8 @@ namespace VNBCC2_HFT_2021222.Models
 
         public Brand(string line)
         {
+            this.Guitars = new HashSet<Guitar>();
+
             string[] split = line.Split('#');
             BrandId = int.Parse(split[0]);
             Name = split[1];

@@ -29,19 +29,13 @@ namespace VNBCC2_HFT_2021222.Repository.Data
             if (!builder.IsConfigured)
             {
                 builder
-                    .UseInMemoryDatabase("guitarshopdb")
-                    .UseLazyLoadingProxies();
+                    .UseLazyLoadingProxies()
+                    .UseInMemoryDatabase("guitarshopdb");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Guitar>(guitar => guitar
-            //                .HasOne(guitar => guitar.Brand)
-            //                .WithMany(Brand => Brand.Guitars)
-            //                .HasForeignKey(guitar => guitar.BrandId)
-            //                .HasForeignKey(guitar => guitar.ShapeId)
-            //                .OnDelete(DeleteBehavior.ClientSetNull));
-
+            
             modelBuilder.Entity<Guitar>(guitar => { guitar
                             .HasOne(g => g.Brand)
                             .WithMany(b => b.Guitars)
@@ -113,7 +107,7 @@ namespace VNBCC2_HFT_2021222.Repository.Data
                 new Brand("8#Gretsch"),
                 new Brand("9#Jackson"),
                 new Brand("10#ESP"),
-            }); ;
+            });
 
             modelBuilder.Entity<Shape>().HasData(new Shape[]
             {

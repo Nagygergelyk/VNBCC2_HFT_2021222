@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace VNBCC2_HFT_2021222.Models
 {
     [Table("guitars")]
-    public class Guitar : Entity
+    public class Guitar
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("guitar_id", TypeName = "int")]
-        public override int Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public int Year { get; set; }
@@ -33,6 +33,11 @@ namespace VNBCC2_HFT_2021222.Models
 
         [ForeignKey(nameof(Shape))]
         public int ShapeId { get; set; }
+
+        public Guitar()
+        {
+
+        }
 
         public Guitar(string line)
         {
