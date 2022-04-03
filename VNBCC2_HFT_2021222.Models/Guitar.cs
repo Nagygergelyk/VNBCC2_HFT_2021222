@@ -23,6 +23,8 @@ namespace VNBCC2_HFT_2021222.Models
 
         [NotMapped] 
         public virtual Brand Brand { get; set; }
+
+        [NotMapped]
         public virtual Shape Shape { get; set; }
 
 

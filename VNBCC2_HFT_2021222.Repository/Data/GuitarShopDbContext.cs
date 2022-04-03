@@ -19,7 +19,6 @@ namespace VNBCC2_HFT_2021222.Repository.Data
             this.Database.EnsureCreated();
         }
 
-
         public GuitarShopDbContext(DbContextOptions<GuitarShopDbContext> options)
             : base(options)
         {
@@ -36,12 +35,37 @@ namespace VNBCC2_HFT_2021222.Repository.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Guitar>(guitar => guitar
-                            .HasOne(guitar => guitar.Brand)
-                            .WithMany(Brand => Brand.Guitars)
-                            .HasForeignKey(guitar => guitar.BrandId)
-                            .HasForeignKey(guitar => guitar.ShapeId)
+            //modelBuilder.Entity<Guitar>(guitar => guitar
+            //                .HasOne(guitar => guitar.Brand)
+            //                .WithMany(Brand => Brand.Guitars)
+            //                .HasForeignKey(guitar => guitar.BrandId)
+            //                .HasForeignKey(guitar => guitar.ShapeId)
+            //                .OnDelete(DeleteBehavior.ClientSetNull));
+
+            modelBuilder.Entity<Guitar>(guitar => { guitar
+                            .HasOne(g => g.Brand)
+                            .WithMany(b => b.Guitars)
+                            .HasForeignKey(g => g.BrandId)
+                            .OnDelete(DeleteBehavior.ClientSetNull);
+
+
+                guitar.HasOne(g => g.Shape)
+                     .WithMany(s => s.Guitars)
+                     .HasForeignKey(guitar => guitar.ShapeId)
+                     .OnDelete(DeleteBehavior.ClientSetNull);
+                            }
+                            );
+
+            modelBuilder.Entity<Shape>(shape => shape
+                            .HasMany(s => s.Guitars)
+                            .WithOne(g => g.Shape)
                             .OnDelete(DeleteBehavior.ClientSetNull));
+
+            modelBuilder.Entity<Brand>(brand => brand
+                            .HasMany(b => b.Guitars)
+                            .WithOne(g => g.Brand)
+                            .OnDelete(DeleteBehavior.ClientSetNull));
+
 
             modelBuilder.Entity<Guitar>().HasData(new Guitar[]
             {

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace VNBCC2_HFT_2021222.Models
@@ -16,12 +17,12 @@ namespace VNBCC2_HFT_2021222.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BrandId { get; set; }
 
-
         [MaxLength(50)]
         [Required]
         public string Name { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<Guitar> Guitars { get; set; }
 
         public Brand()
