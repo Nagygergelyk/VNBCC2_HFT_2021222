@@ -21,7 +21,5 @@
 </ItemGroup>
 <ItemGroup>
   <Folder Include="Interfaces\" />
-  <Folder Include="ModelRepositories\" />
-  <Folder Include="GenericRepository\" />
 </ItemGroup>
 </Project>
