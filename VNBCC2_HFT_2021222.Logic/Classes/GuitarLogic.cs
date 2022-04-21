@@ -17,6 +17,23 @@ namespace VNBCC2_HFT_2021222.Logic.Classes
         {
             this.repo = repo;
         }
+
+        public IEnumerable<KeyValuePair<string, double>> AVGPriceByBrands()
+        {
+            return from guitar in repo.ReadAll()
+                   group guitar by guitar.Brand.Name into g
+                   select new KeyValuePair<string, double>
+                   (g.Key, g.Average(t => t.BasePrice) ?? -1);
+        }
+
+        public IEnumerable<KeyValuePair<string, double>> AVGPriceByShapes()
+        {
+            return from guitar in repo.ReadAll()
+                   group guitar by guitar.Shape.Name into g
+                   select new KeyValuePair<string, double>
+                   (g.Key, g.Average(t => t.BasePrice) ?? -1);
+        }
+
         public void Create(Guitar item)
         {
             this.repo.Create(item);
