@@ -34,6 +34,14 @@ namespace VNBCC2_HFT_2021222.Logic.Classes
                    (g.Key, g.Average(t => t.BasePrice) ?? -1);
         }
 
+        public IEnumerable<KeyValuePair<int, double>> AVGPriceByYears()
+        {
+            return from guitar in repo.ReadAll()
+                   group guitar by guitar.Year into g
+                   select new KeyValuePair<int, double>
+                   (g.Key, g.Sum(t => t.BasePrice) ?? -1);
+        }
+
         public void Create(Guitar item)
         {
             this.repo.Create(item);
@@ -42,6 +50,16 @@ namespace VNBCC2_HFT_2021222.Logic.Classes
         public void Delete(int id)
         {
             this.repo.Delete(id);
+        }
+
+        public IEnumerable<KeyValuePair<string, int>> NumberOfModelsByBrands()
+        {
+            /*return from guitar in repo.ReadAll()
+                   group guitar by guitar.Brand.Name into g
+                   select new KeyValuePair<string, int>
+                   (g.Key, g.Count(t => t.Id)?? -1);*/
+
+            return null;
         }
 
         public Guitar Read(int id)
@@ -66,13 +84,20 @@ namespace VNBCC2_HFT_2021222.Logic.Classes
 
         public IEnumerable<YearInfo> YearStatistics()
         {
-            
+            return from x in this.repo.ReadAll()
+                   group x by x.Year into g
+                   select new YearInfo()
+                   {
+                       Year = g.Key,
+                       BasePrice = g.Average(t => t.BasePrice),
+                       Number = g.Count()
+                   };
         }
         public class YearInfo
         {
             public int Year { get; set; }
-            public double? AvgRating { get; set; }
-            public int MovieNumber { get; set; }
+            public double? BasePrice { get; set; }
+            public int Number { get; set; }
         }
     }
 }
