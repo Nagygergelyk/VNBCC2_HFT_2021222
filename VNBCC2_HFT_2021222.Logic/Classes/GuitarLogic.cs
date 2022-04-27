@@ -39,6 +39,13 @@ namespace VNBCC2_HFT_2021222.Logic.Classes
             return from guitar in repo.ReadAll()
                    group guitar by guitar.Year into g
                    select new KeyValuePair<int, double>
+                   (g.Key, g.Average(t => t.BasePrice) ?? -1);
+        }
+        public IEnumerable<KeyValuePair<int, double>> AllPriceByYears()
+        {
+            return from guitar in repo.ReadAll()
+                   group guitar by guitar.Year into g
+                   select new KeyValuePair<int, double>
                    (g.Key, g.Sum(t => t.BasePrice) ?? -1);
         }
 
@@ -78,24 +85,6 @@ namespace VNBCC2_HFT_2021222.Logic.Classes
         public void Update(Guitar item)
         {
             this.repo.Update(item);
-        }
-
-        public IEnumerable<YearInfo> YearStatistics()
-        {
-            return from x in this.repo.ReadAll()
-                   group x by x.Year into g
-                   select new YearInfo()
-                   {
-                       Year = g.Key,
-                       BasePrice = g.Average(t => t.BasePrice),
-                       Number = g.Count()
-                   };
-        }
-        public class YearInfo
-        {
-            public int Year { get; set; }
-            public double? BasePrice { get; set; }
-            public int Number { get; set; }
         }
     }
 }
