@@ -17,7 +17,7 @@ namespace VNBCC2_HFT_2021222.Logic.Interfaces
         void Update(Guitar item);
         IEnumerable<KeyValuePair<string, double>> AVGPriceByBrands();
         IEnumerable<KeyValuePair<string, double>> AVGPriceByShapes();
-        IEnumerable<KeyValuePair<string, int>> NumberOfModelsByBrands();
+        IEnumerable<KeyValuePair<string, double>> AVGPriceOfGuitarsByBrands();
         IEnumerable<KeyValuePair<int, double>> AVGPriceByYears();
 
 
