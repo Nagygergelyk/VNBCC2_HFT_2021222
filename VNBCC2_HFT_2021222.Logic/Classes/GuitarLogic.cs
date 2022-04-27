@@ -54,10 +54,11 @@ namespace VNBCC2_HFT_2021222.Logic.Classes
 
         public IEnumerable<KeyValuePair<string, int>> NumberOfModelsByBrands()
         {
+            //szar kell másik
             /*return from guitar in repo.ReadAll()
                    group guitar by guitar.Brand.Name into g
                    select new KeyValuePair<string, int>
-                   (g.Key, g.Count(t => t.Id)?? -1);*/
+                   (g.Key, g.Count(t => t.Brand.Name)?? -1);*/
 
             return null;
         }
