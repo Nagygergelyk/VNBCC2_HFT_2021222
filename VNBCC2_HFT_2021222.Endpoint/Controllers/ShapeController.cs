@@ -9,7 +9,7 @@ using VNBCC2_HFT_2021222.Models;
 
 namespace VNBCC2_HFT_2021222.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ShapeController : ControllerBase
     {

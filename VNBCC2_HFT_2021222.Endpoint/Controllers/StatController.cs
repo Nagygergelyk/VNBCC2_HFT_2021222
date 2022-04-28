@@ -9,7 +9,7 @@ using VNBCC2_HFT_2021222.Logic.Interfaces;
 
 namespace VNBCC2_HFT_2021222.Endpoint.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class StatController : ControllerBase
     {
