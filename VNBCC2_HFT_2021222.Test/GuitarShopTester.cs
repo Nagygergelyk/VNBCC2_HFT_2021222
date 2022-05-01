@@ -97,6 +97,20 @@ namespace VNBCC2_HFT_2021222.Test
             mockGuitarRepo.Verify(r => r.Create(guitar), Times.Once);
 
         }
-            
+        [Test]
+        public void CreateTest2()
+        {
+
+        }
+        [Test]
+        public void CreateTest3()
+        {
+
+        }
+        [Test]
+        public void DeleteTest2()
+        {
+
+        }
     }
 }
