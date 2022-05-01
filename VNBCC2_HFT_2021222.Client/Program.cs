@@ -122,6 +122,14 @@ namespace VNBCC2_HFT_2021222.Client
                 rest.Delete(id, "shape");
             }
         }
+        static void StatMethods(string entity)
+        {
+            //List<Brand> price = rest.Get<Brand>(entity);
+            //foreach (var item in price)
+            //{
+            //    Console.WriteLine(item.Name);
+            //}
+        }
             static void Main(string[] args)
         {
             rest = new RestService("http://localhost:48507/");
@@ -132,7 +140,14 @@ namespace VNBCC2_HFT_2021222.Client
                 .Add("Delete", () => Delete("Brand"))
                 .Add("Update", () => Update("Brand"))
                 .Add("Exit", ConsoleMenu.Close);
-
+            
+            var nonCrudMethods = new ConsoleMenu(args, level: 1)
+                .Add("AVGPriceByBrands", () => StatMethods("AVGPriceByBrands"))
+                .Add("AVGPriceByShapes", () => StatMethods("AVGPriceByShapes"))
+                .Add("AVGPriceOfGuitarsByBrands", () => StatMethods("AVGPriceOfGuitarsByBrands"))
+                .Add("AVGPriceByYears", () => StatMethods("AVGPriceByYears"))
+                .Add("AllPriceByYears", () => StatMethods("AllPriceByYears"))
+                .Add("Exit", ConsoleMenu.Close);
 
             var guitarSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Guitar"))
@@ -153,6 +168,7 @@ namespace VNBCC2_HFT_2021222.Client
                 .Add("Brands", () => brandSubMenu.Show())
                 .Add("Guitars", () => guitarSubMenu.Show())
                 .Add("Shapes", () => shapeSubMenu.Show())
+                .Add("Non-CRUD Methods", () => nonCrudMethods.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             menu.Show();
