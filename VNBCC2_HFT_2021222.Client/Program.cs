@@ -144,7 +144,7 @@ namespace VNBCC2_HFT_2021222.Client
             var nonCrudMethods = new ConsoleMenu(args, level: 1)
                 .Add("AVGPriceByBrands", () => StatMethods("AVGPriceByBrands"))
                 .Add("AVGPriceByShapes", () => StatMethods("AVGPriceByShapes"))
-                .Add("AVGPriceOfGuitarsByBrands", () => StatMethods("AVGPriceOfGuitarsByBrands"))
+                .Add("AllPriceOfGuitarsByBrands", () => StatMethods("AllPriceOfGuitarsByBrands"))
                 .Add("AVGPriceByYears", () => StatMethods("AVGPriceByYears"))
                 .Add("AllPriceByYears", () => StatMethods("AllPriceByYears"))
                 .Add("Exit", ConsoleMenu.Close);

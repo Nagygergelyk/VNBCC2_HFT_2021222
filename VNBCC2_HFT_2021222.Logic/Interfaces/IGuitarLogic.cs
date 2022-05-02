@@ -19,7 +19,7 @@ namespace VNBCC2_HFT_2021222.Logic.Interfaces
 
         IEnumerable<KeyValuePair<string, double>> AVGPriceByBrands();
         IEnumerable<KeyValuePair<string, double>> AVGPriceByShapes();
-        IEnumerable<KeyValuePair<string, double>> AVGPriceOfGuitarsByBrands();
+        IEnumerable<KeyValuePair<string, double>> AllPriceOfGuitarsByBrands();
         IEnumerable<KeyValuePair<int, double>> AVGPriceByYears();
         IEnumerable<KeyValuePair<int, double>> AllPriceByYears();
 

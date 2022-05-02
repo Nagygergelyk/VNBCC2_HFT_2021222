@@ -30,9 +30,9 @@ namespace VNBCC2_HFT_2021222.Endpoint.Controllers
             return this.logic.AVGPriceByShapes();
         }
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, double>> AVGPriceOfGuitarsByBrands()
+        public IEnumerable<KeyValuePair<string, double>> AllPriceOfGuitarsByBrands()
         {
-            return this.logic.AVGPriceOfGuitarsByBrands();
+            return this.logic.AllPriceOfGuitarsByBrands();
         }
         [HttpGet]
         public IEnumerable<KeyValuePair<int, double>> AVGPriceByYears()

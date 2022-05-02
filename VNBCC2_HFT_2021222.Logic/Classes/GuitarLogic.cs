@@ -59,12 +59,12 @@ namespace VNBCC2_HFT_2021222.Logic.Classes
             this.repo.Delete(id);
         }
 
-        public IEnumerable<KeyValuePair<string, double>> AVGPriceOfGuitarsByBrands()
+        public IEnumerable<KeyValuePair<string, double>> AllPriceOfGuitarsByBrands()
         {
             return from guitar in repo.ReadAll()
                    group guitar by guitar.Brand.Name into g
                    select new KeyValuePair<string, double>
-                   (g.Key, g.Average(t => t.BasePrice)?? -1);
+                   (g.Key, g.Sum(t => t.BasePrice)?? -1);
         }
 
         public Guitar Read(int id)
