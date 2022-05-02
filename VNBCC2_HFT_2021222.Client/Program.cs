@@ -124,11 +124,29 @@ namespace VNBCC2_HFT_2021222.Client
         }
         static void StatMethods(string entity)
         {
-            //List<Brand> price = rest.Get<Brand>(entity);
-            //foreach (var item in price)
-            //{
-            //    Console.WriteLine(item.Name);
-            //}
+
+            if (entity == "stat/avgpricebybrands" || entity == "stat/AVGPriceByShapes" || entity == "stat/AllPriceOfGuitarsByBrands")
+            {
+                var guitars = rest.Get<KeyValuePair<string, double>>(entity);
+                foreach (var item in guitars)
+                {
+                    Console.WriteLine(item.Key + ": " + item.Value);
+                }
+            }
+            else if (entity == "stat/AVGPriceByYears" || entity == "stat/AllPriceByYears")
+            {
+                var guitars = rest.Get<KeyValuePair<int, double>>(entity);
+                foreach (var item in guitars)
+                {
+                    Console.WriteLine(item.Key + ": " + item.Value);
+                }
+            }
+            else
+            {
+                throw new ArgumentException("No such Non-CRUD method!");
+            }
+            Console.ReadLine();
+            
         }
             static void Main(string[] args)
         {
@@ -142,11 +160,11 @@ namespace VNBCC2_HFT_2021222.Client
                 .Add("Exit", ConsoleMenu.Close);
             
             var nonCrudMethods = new ConsoleMenu(args, level: 1)
-                .Add("AVGPriceByBrands", () => StatMethods("AVGPriceByBrands"))
-                .Add("AVGPriceByShapes", () => StatMethods("AVGPriceByShapes"))
-                .Add("AllPriceOfGuitarsByBrands", () => StatMethods("AllPriceOfGuitarsByBrands"))
-                .Add("AVGPriceByYears", () => StatMethods("AVGPriceByYears"))
-                .Add("AllPriceByYears", () => StatMethods("AllPriceByYears"))
+                .Add("AVGPriceByBrands", () => StatMethods("stat/avgpricebybrands"))
+                .Add("AVGPriceByShapes", () => StatMethods("stat/AVGPriceByShapes"))
+                .Add("AllPriceOfGuitarsByBrands", () => StatMethods("stat/AllPriceOfGuitarsByBrands"))
+                .Add("AVGPriceByYears", () => StatMethods("stat/AVGPriceByYears"))
+                .Add("AllPriceByYears", () => StatMethods("stat/AllPriceByYears"))
                 .Add("Exit", ConsoleMenu.Close);
 
             var guitarSubMenu = new ConsoleMenu(args, level: 1)
