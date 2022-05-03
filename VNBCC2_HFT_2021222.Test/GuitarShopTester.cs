@@ -136,20 +136,14 @@ namespace VNBCC2_HFT_2021222.Test
 
         }
         [Test]
-        public void CreateTest2()
+        public void ReadTestException()
         {
-            var guitar = new Guitar() { BasePrice = 100, BrandId = 100, Id = 100, ShapeId = 100, Year = 2000};
+            mockGuitarRepo
+              .Setup(r => r.Read(It.IsAny<int>()))
+              .Returns(value: null);
 
-            try
-            {
-                logic.Create(guitar);
-            }
-            catch
-            {
+            Assert.Throws<ArgumentException>(() => logic.Read(1));
 
-
-            }
-            mockGuitarRepo.Verify(r => r.Create(guitar), Times.Once);
 
         }
         [Test]
@@ -162,11 +156,9 @@ namespace VNBCC2_HFT_2021222.Test
         [Test]
         public void UpdateTest()
         {
-            var guitar = new Guitar() { BasePrice = 69, BrandId = 69, Id = 2, ShapeId = 69, Year = 2000 };
+            Assert.That(() => logic.Read(0), Throws.TypeOf<ArgumentException>());
+            Assert.That(() => logic.Read(4), Throws.TypeOf<ArgumentException>());
 
-            logic.Update(guitar);
-
-            Assert.That(logic.Read(guitar.Id), Is.EqualTo(logic.Read(69)));
         }
     }
 }

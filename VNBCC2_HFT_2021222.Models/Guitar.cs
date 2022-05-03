@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace VNBCC2_HFT_2021222.Models
 {
+
     [Table("guitars")]
     public class Guitar
     {
@@ -17,8 +18,11 @@ namespace VNBCC2_HFT_2021222.Models
         public int Id { get; set; }
 
         [Required]
-        public int Year { get; set; }
+        [Range(1500, 2022)]
 
+        public int Year { get; set; }
+        
+        [Range(0, int.MaxValue)]
         public int? BasePrice { get; set; }
 
         [NotMapped] 
