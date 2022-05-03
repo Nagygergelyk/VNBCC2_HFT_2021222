@@ -47,7 +47,7 @@ namespace VNBCC2_HFT_2021222.Test
                 },
                 new Guitar()
                 {
-                    Id = 3,
+                    Id = 2,
                     BasePrice = 200,
                     BrandId = 100,
                     ShapeId = 100,
@@ -138,19 +138,35 @@ namespace VNBCC2_HFT_2021222.Test
         [Test]
         public void CreateTest2()
         {
-            
+            var guitar = new Guitar() { BasePrice = 100, BrandId = 100, Id = 100, ShapeId = 100, Year = 2000};
 
-            
+            try
+            {
+                logic.Create(guitar);
+            }
+            catch
+            {
+
+
+            }
+            mockGuitarRepo.Verify(r => r.Create(guitar), Times.Once);
+
         }
         [Test]
-        public void CreateTest3()
+        public void ReadAllTest()
         {
+            var v = logic.ReadAll().Count();
 
+            Assert.That(v, Is.EqualTo(3));
         }
         [Test]
-        public void DeleteTest2()
+        public void UpdateTest()
         {
+            var guitar = new Guitar() { BasePrice = 69, BrandId = 69, Id = 2, ShapeId = 69, Year = 2000 };
 
+            logic.Update(guitar);
+
+            Assert.That(logic.Read(guitar.Id), Is.EqualTo(logic.Read(69)));
         }
     }
 }

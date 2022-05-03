@@ -18,6 +18,7 @@ namespace VNBCC2_HFT_2021222.Models
         public int BrandId { get; set; }
 
         [MaxLength(50)]
+        [MinLength(1)]
         [Required]
         public string Name { get; set; }
 

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using VNBCC2_HFT_2021222.Models;
 using ConsoleTools;
+using System.Linq;
+
 namespace VNBCC2_HFT_2021222.Client
 {
     internal class Program
@@ -27,7 +29,8 @@ namespace VNBCC2_HFT_2021222.Client
                 int year = Convert.ToInt32(Console.ReadLine());
                 Console.Write("Enter Guitar's ShapeId: ");
                 int shapeId = Convert.ToInt32(Console.ReadLine());
-                rest.Post(new Guitar() { BasePrice = basePrice, BrandId = brandId, Year = year , ShapeId = shapeId}, "guitar");
+                int id = rest.Get<Guitar>("guitar").Count() + 1;
+                rest.Post(new Guitar() { BasePrice = basePrice, BrandId = brandId, Year = year , ShapeId = shapeId, Id = id}, "guitar");
             }
             if (entity == "Shape")
             {
@@ -54,7 +57,7 @@ namespace VNBCC2_HFT_2021222.Client
                 List<Guitar> guitars = rest.Get<Guitar>("guitar");
                 foreach (var item in guitars)
                 {
-                    Console.WriteLine(item.Brand.Name + ": " + item.Shape.Name);
+                    Console.WriteLine(item.Id+ ": " + item.Brand.Name + ": " + item.Shape.Name + ": " + item.BasePrice);
                 }
             }
             else if (entity == "Shape")
@@ -82,12 +85,12 @@ namespace VNBCC2_HFT_2021222.Client
             }
             if (entity == "Guitar")
             {
-                Console.Write("Enter Guitar's id to update: ");
+                Console.Write("Enter Guitar's id to update its Base Price: ");
                 int id = int.Parse(Console.ReadLine());
                 Guitar one = rest.Get<Guitar>(id, "guitar");
-                Console.Write($"New name [old: {one.Shape.Name}]: ");
-                string name = Console.ReadLine();
-                one.Shape.Name = name;
+                Console.Write($"New Price [old: {one.BasePrice}]: ");
+                int basePrice = Convert.ToInt32(Console.ReadLine());
+                one.BasePrice = basePrice;
                 rest.Put(one, "guitar");
             }
             if (entity == "Shape")
