@@ -61,6 +61,11 @@ namespace VNBCC2_HFT_2021222.Endpoint
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VNBCC2_HFT_2021222.Endpoint v1"));
             }
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:42482"));
 
             app.UseRouting();
 
