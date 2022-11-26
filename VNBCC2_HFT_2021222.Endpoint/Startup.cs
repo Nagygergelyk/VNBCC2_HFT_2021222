@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VNBCC2_HFT_2021222.Endpoint.Services;
 using VNBCC2_HFT_2021222.Logic;
 using VNBCC2_HFT_2021222.Logic.Classes;
 using VNBCC2_HFT_2021222.Logic.Interfaces;
@@ -42,7 +43,7 @@ namespace VNBCC2_HFT_2021222.Endpoint
             services.AddTransient<IShapeLogic, ShapeLogic>();
 
 
-
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -68,6 +69,7 @@ namespace VNBCC2_HFT_2021222.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

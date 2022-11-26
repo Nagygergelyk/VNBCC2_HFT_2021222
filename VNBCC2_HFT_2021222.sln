@@ -24,7 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{065B0C
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNBCC2_HFT_2021222.Endpoint", "VNBCC2_HFT_2021222.Endpoint\VNBCC2_HFT_2021222.Endpoint.csproj", "{289E7049-04AA-45D2-8EE4-422721FF1E7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNBCC2_HFT_2021222.Endpoint", "VNBCC2_HFT_2021222.Endpoint\VNBCC2_HFT_2021222.Endpoint.csproj", "{289E7049-04AA-45D2-8EE4-422721FF1E7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNBCC2_GUI_202223.WpfClient", "VNBCC2_GUI_202223.WpfClient\VNBCC2_GUI_202223.WpfClient.csproj", "{0CBBA867-533D-43C8-98F8-9DBBF819A109}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,10 @@ Global
 		{289E7049-04AA-45D2-8EE4-422721FF1E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{289E7049-04AA-45D2-8EE4-422721FF1E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{289E7049-04AA-45D2-8EE4-422721FF1E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CBBA867-533D-43C8-98F8-9DBBF819A109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CBBA867-533D-43C8-98F8-9DBBF819A109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CBBA867-533D-43C8-98F8-9DBBF819A109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CBBA867-533D-43C8-98F8-9DBBF819A109}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
