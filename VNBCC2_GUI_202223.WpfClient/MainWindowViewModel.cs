@@ -77,8 +77,10 @@ namespace VNBCC2_GUI_202223.WpfClient
                 {
                     selectedGuitar = new Guitar()
                     {
+                        BasePrice = value.BasePrice,
                         Id = value.Id,
-                        BasePrice = value.BasePrice
+                        Year = 2000
+                        
                     };
                 }
                 OnPropertyChanged();
